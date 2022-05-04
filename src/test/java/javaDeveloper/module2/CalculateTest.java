@@ -59,7 +59,7 @@ class CalculateTest {
     @Test
     public void testThatCalculateTotalCostThrowsException() {
         assertThrows(IllegalArgumentException.class, () -> {
-            double setValue = new Calculate().calculateTotalCost(" ");
+            new Calculate().calculateTotalCost("CACBCA CACDCAC");
         });
     }
 
