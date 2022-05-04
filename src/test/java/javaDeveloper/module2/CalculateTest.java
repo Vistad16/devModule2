@@ -65,9 +65,13 @@ class CalculateTest {
   }
 
   @Test
-  public void testThatCalculateTotalCostThrowsException() {
+  public void testThatCalculateTotalCostThrowsIllegalArgumentException() {
     assertThrows(
-        IllegalArgumentException.class,
-        () -> new Calculate().calculateTotalCost("CACBCA CACDCAC"));
+        IllegalArgumentException.class, () -> new Calculate().calculateTotalCost("CACBCA CACDCAC"));
+  }
+
+  @Test
+  public void testThatCalculateTotalCostThrowsNullPointerException() {
+    assertThrows(NullPointerException.class, () -> new Calculate().calculateTotalCost(null));
   }
 }
