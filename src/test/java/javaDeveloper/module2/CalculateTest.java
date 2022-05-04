@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 class CalculateTest {
 
     @Test
@@ -52,6 +54,13 @@ class CalculateTest {
         double expected = 15.25;
 
         Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testThatCalculateTotalCostThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            double setValue = new Calculate().calculateTotalCost(" ");
+        });
     }
 
 }
