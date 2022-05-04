@@ -10,7 +10,7 @@ import java.util.Map;
 class CalculateTest {
 
     @Test
-    public void testThatCalculateTotalCostWorksOk(){
+    public void testThatCalculateTotalCostWorksOk() {
         Map<String, Double> testCase = new HashMap<>();
         testCase.put("A", 1.25);
         testCase.put("B", 4.25);
@@ -23,7 +23,7 @@ class CalculateTest {
     }
 
     @Test
-    public void testThatCalculateTotalCostForDifferentValues(){
+    public void testThatCalculateTotalCostForDifferentValues() {
         double actual = new Calculate().calculateTotalCost("ABCD");
         double expected = 7.25;
 
@@ -31,7 +31,7 @@ class CalculateTest {
     }
 
     @Test
-    public void testThatCalculateTotalCostForDiscountA(){
+    public void testThatCalculateTotalCostForDiscountA() {
         double actual = new Calculate().calculateTotalCost("AAA");
         double expected = 3.00;
 
@@ -39,7 +39,7 @@ class CalculateTest {
     }
 
     @Test
-    public void testThatCalculateTotalCostForDiscountC(){
+    public void testThatCalculateTotalCostForDiscountC() {
         double actual = new Calculate().calculateTotalCost("CCCCCC");
         double expected = 5.00;
 
@@ -47,9 +47,9 @@ class CalculateTest {
     }
 
     @Test
-    public void testThatCalculateTotalCostMaxCases(){
-        double actual = new Calculate().calculateTotalCost("ACBCACACDCC");
-        double expected = 13.00;
+    public void testThatCalculateTotalCostMaxCases() {
+        double actual = new Calculate().calculateTotalCost("CACBCACACDCAC");
+        double expected = 15.25;
 
         Assertions.assertEquals(expected, actual);
     }
