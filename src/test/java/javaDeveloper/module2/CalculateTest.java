@@ -12,6 +12,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class CalculateTest {
 
     @Test
+    public void testThatCalculateTotalCostForEmptyValues() {
+        double actual = new Calculate().calculateTotalCost("");
+        double expected = 0.0;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void testThatCalculateTotalCostWorksOk() {
         Map<String, Double> testCase = new HashMap<>();
         testCase.put("A", 1.25);
