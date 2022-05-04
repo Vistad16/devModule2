@@ -1,5 +1,12 @@
 package module2;
 
+
+//please don't forget we are using OOP
+//try to implement the application with Java objects like Shop, product, calculator etc.
+//also use Mockito for mocking internal dependency
+
+//actually I could apply the HW as done, but in this case, you won't learn using Mockito but it's a very important and useful tool
+//so I suggest refactoring it
 public class Calculate {
   public double calculateTotalCost(String groceryBasket) {
     double result = 0;
