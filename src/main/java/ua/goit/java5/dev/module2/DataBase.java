@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DataBase {
-  public Object goodsBase(Character id) {
-    Map<Character, Object> objectMap = new HashMap<>();
+  public Goods goodsBase(Character id) {
+    Map<Character, Goods> objectMap = new HashMap<>();
     objectMap.put('A', new Goods(1.25, 3, 0.25));
     objectMap.put('B', new Goods(4.25, 0, 0.00));
     objectMap.put('C', new Goods(1.00, 6, 0.1666666666666667));
