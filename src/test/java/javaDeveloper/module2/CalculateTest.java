@@ -1,8 +1,8 @@
 package javaDeveloper.module2;
 
-import module2.Calculate;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import ua.goit.java5.dev.module2.Calculate;
 
 import java.util.HashMap;
 import java.util.Map;
