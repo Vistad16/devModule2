@@ -1,7 +1,6 @@
 package javaDeveloper.module2;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ua.goit.java5.dev.module2.Calculate;
 
