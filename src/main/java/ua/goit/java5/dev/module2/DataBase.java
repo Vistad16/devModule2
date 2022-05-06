@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DataBase {
-  public Goods goodsBase(Character id) {
+  public Goods goodsBase(char id) {
     Map<Character, Goods> objectMap = new HashMap<>();
     objectMap.put('A', new Goods(1.25, 3, 0.25));
     objectMap.put('B', new Goods(4.25, 0, 0.00));
