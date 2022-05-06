@@ -1,14 +1,19 @@
 package javaDeveloper.module2;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
 import ua.goit.java5.dev.module2.Calculate;
+import ua.goit.java5.dev.module2.DataBase;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@ExtendWith(MockitoExtension.class)
 class CalculateTest {
 
   @Test
@@ -16,7 +21,7 @@ class CalculateTest {
     double actual = new Calculate().calculateTotalCost("");
     double expected = 0.0;
 
-    Assertions.assertEquals(expected, actual);
+    assertEquals(expected, actual);
   }
 
   @Test
@@ -28,8 +33,7 @@ class CalculateTest {
     testCase.put("D", 0.75);
 
     testCase.forEach(
-        (code, price) ->
-            Assertions.assertEquals(price, new Calculate().calculateTotalCost(code), code));
+        (code, price) -> assertEquals(price, new Calculate().calculateTotalCost(code), code));
   }
 
   @Test
@@ -37,7 +41,7 @@ class CalculateTest {
     double actual = new Calculate().calculateTotalCost("ABCD");
     double expected = 7.25;
 
-    Assertions.assertEquals(expected, actual);
+    assertEquals(expected, actual);
   }
 
   @Test
@@ -45,7 +49,7 @@ class CalculateTest {
     double actual = new Calculate().calculateTotalCost("AAA");
     double expected = 3.00;
 
-    Assertions.assertEquals(expected, actual);
+    assertEquals(expected, actual);
   }
 
   @Test
@@ -53,7 +57,7 @@ class CalculateTest {
     double actual = new Calculate().calculateTotalCost("CCCCCC");
     double expected = 5.00;
 
-    Assertions.assertEquals(expected, actual);
+    assertEquals(expected, actual);
   }
 
   @Test
@@ -61,7 +65,7 @@ class CalculateTest {
     double actual = new Calculate().calculateTotalCost("CACBCACACDCAC");
     double expected = 15.25;
 
-    Assertions.assertEquals(expected, actual);
+    assertEquals(expected, actual);
   }
 
   @Test
@@ -73,5 +77,13 @@ class CalculateTest {
   @Test
   public void testThatCalculateTotalCostThrowsNullPointerException() {
     assertThrows(NullPointerException.class, () -> new Calculate().calculateTotalCost(null));
+  }
+
+  @InjectMocks DataBase dic;
+
+  @Test
+  public void MockTest() {
+
+    assertEquals(1.25, dic.goodsBase('A').getPrice());
   }
 }
