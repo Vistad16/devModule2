@@ -79,6 +79,11 @@ class CalculateTest {
     assertThrows(NullPointerException.class, () -> new Calculate().calculateTotalCost(null));
   }
 
+  //close. First of all - global variables should be on the top before all tests
+  //second - you have to mock DataBase and method goodsBase() for all your test using
+  //when().thenReturn construction
+
+
   @InjectMocks DataBase dic;
 
   @Test
