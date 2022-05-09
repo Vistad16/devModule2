@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class DataBase {
   //the name of a method should be a verb instead of noun. At least you can use prefix get
-  public Goods goodsBase(char id) {
+  public Goods getGoods(char id) {
     Map<Character, Goods> objectMap = new HashMap<>();
     objectMap.put('A', new Goods(1.25, 3, 0.25));
     objectMap.put('B', new Goods(4.25, 0, 0.00));

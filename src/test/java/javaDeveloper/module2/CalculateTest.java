@@ -89,6 +89,6 @@ class CalculateTest {
   @Test
   public void MockTest() {
 
-    assertEquals(1.25, dic.goodsBase('A').getPrice());
+    assertEquals(1.25, dic.getGoods('A').getPrice());
   }
 }

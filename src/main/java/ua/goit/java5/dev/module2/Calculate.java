@@ -18,7 +18,7 @@ public class Calculate {
     char[] codeArr = groceryBasket.toCharArray();
 
     for (char currentCode : codeArr) {
-      Goods goods = dataBase.goodsBase(currentCode);
+      Goods goods = dataBase.getGoods(currentCode);
       if (currentCode == 'A') {
         result += goods.getPrice();
         discountA++;
@@ -43,7 +43,7 @@ public class Calculate {
   }
 
   private double discountCheck(char id, double result, int discount) {
-    Goods goods = dataBase.goodsBase(id);
+    Goods goods = dataBase.getGoods(id);
     if (goods.getQuantityDiscount() != 0 & discount >= goods.getQuantityDiscount()) {
       result -= goods.getQuantityDiscount() * goods.getDiscountPrice();
     }
