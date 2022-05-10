@@ -1,11 +1,6 @@
-package javaDeveloper.module2;
+package ua.goit.java5.dev.module2;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.junit.jupiter.MockitoExtension;
-import ua.goit.java5.dev.module2.Calculate;
-import ua.goit.java5.dev.module2.DataBase;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,8 +8,11 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@ExtendWith(MockitoExtension.class)
 class CalculateTest {
+
+  // close. First of all - global variables should be on the top before all tests
+  // second - you have to mock DataBase and method goodsBase() for all your test using
+  // when().thenReturn construction
 
   @Test
   public void testThatCalculateTotalCostForEmptyValues() {
@@ -77,18 +75,5 @@ class CalculateTest {
   @Test
   public void testThatCalculateTotalCostThrowsNullPointerException() {
     assertThrows(NullPointerException.class, () -> new Calculate().calculateTotalCost(null));
-  }
-
-  //close. First of all - global variables should be on the top before all tests
-  //second - you have to mock DataBase and method goodsBase() for all your test using
-  //when().thenReturn construction
-
-
-  @InjectMocks DataBase dic;
-
-  @Test
-  public void MockTest() {
-
-    assertEquals(1.25, dic.getGoods('A').getPrice());
   }
 }
