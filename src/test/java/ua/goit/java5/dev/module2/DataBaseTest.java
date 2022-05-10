@@ -9,6 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
+
+//We shouldn't mock the main class what we want to test, we have to mock only internal dependencies
+  // it means we have to mock DataBase IN CalculateTest because the Calculate class use the DataBase inside
+
+  //if we want to test DataBase class we have to do it without Mockito
 class DataBaseTest {
 
   @Mock DataBase dataBase;
