@@ -18,6 +18,17 @@ class CalculateTest {
   @Mock
   DataBase dataBase;
 
+  //Very-very close
+  //the last step: in the testThatDataBaseWithIdA you mocked the call to dataBase object and then asserts the same
+  //we shouldn't test the mockito, we have to test the Calculate class
+
+  //For example testThatCalculateTotalCostForDifferentValues
+  //you have to you have to Mock all calls to the dataBase during the calculateTotalCost method in the same test
+
+  // to summarise - we have to test Calculate class but in the test we have to mock DataBase usages inside the method
+
+  //it can be difficult. It's because you code structure. Code should be testable, maybe it's will be better refactoring it a little
+
   @Test
   public void testThatDataBaseWithIdA() {
     when(dataBase.getGoods('A')).thenReturn(new DataBase().getGoods('A'));
