@@ -1,46 +1,48 @@
 package ua.goit.java5.dev.module2;
 
+import ua.goit.java5.dev.module2.service.DataBaseService;
+import ua.goit.java5.dev.module2.service.HardcodedDataBase;
+
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Calculate {
-  DataBase dataBase = new DataBase();
+  DataBaseService dataBase = new HardcodedDataBase();
 
   public double calculateTotalCost(String groceryBasket) {
     double result = 0;
-    int discountA = 0;
-    int discountB = 0;
-    int discountC = 0;
-    int discountD = 0;
+
     char[] codeArr = groceryBasket.toCharArray();
+
+    Map<Character, AtomicInteger> goodCount = new HashMap<>();
 
     for (char currentCode : codeArr) {
       Goods goods = dataBase.getGoods(currentCode);
-      if (currentCode == 'A') {
-        result += goods.getPrice();
-        discountA++;
-      } else if (currentCode == 'B') {
-        result += goods.getPrice();
-        discountB++;
-      } else if (currentCode == 'C') {
-        result += goods.getPrice();
-        discountC++;
-      } else if (currentCode == 'D') {
-        result += goods.getPrice();
-        discountD++;
-      } else throw new IllegalArgumentException("Incorrect input");
-    }
+      if (goods == null) {
+        throw new IllegalArgumentException("Incorrect value");
+      }
+      int quantity =
+          goodCount.computeIfAbsent(currentCode, key -> new AtomicInteger(0)).incrementAndGet();
 
-    result = discountCheck('A', result, discountA);
-    result = discountCheck('B', result, discountB);
-    result = discountCheck('C', result, discountC);
-    result = discountCheck('D', result, discountD);
+      result += goods.getPrice();
+      if (quantity == goods.getQuantityDiscount()) {
+
+        result = subtractDiscount(result, goods);
+      }
+    }
 
     return result;
   }
 
-  private double discountCheck(char id, double result, int discount) {
-    Goods goods = dataBase.getGoods(id);
-    if (goods.getQuantityDiscount() != 0 & discount >= goods.getQuantityDiscount()) {
-      result -= goods.getQuantityDiscount() * goods.getDiscountPrice();
-    }
-    return result;
+  private BigDecimal getGoodDiscount(Goods goods) {
+    return BigDecimal.valueOf(goods.getDiscountPrice())
+        .multiply(BigDecimal.valueOf(goods.getQuantityDiscount()));
+  }
+
+  private double subtractDiscount(double totalPrice, Goods goods) {
+    BigDecimal goodDiscount = getGoodDiscount(goods);
+    return BigDecimal.valueOf(totalPrice).subtract(goodDiscount).doubleValue();
   }
 }
