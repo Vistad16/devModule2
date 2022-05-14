@@ -1,4 +1,6 @@
-package ua.goit.java5.dev.module2;
+package ua.goit.java5.dev.module2.service;
+
+import ua.goit.java5.dev.module2.Goods;
 
 import java.util.HashMap;
 import java.util.Map;
